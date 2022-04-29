@@ -9,12 +9,25 @@
 		$installmax[] = $data['MaximumInstalls'];
 	}	
  
-	$dataPoints = array();
+	function console_log($output, $with_script_tags = true) {
+		$js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
+	');';
+		if ($with_script_tags) {
+			$js_code = '<script>' . $js_code . '</script>';
+		}
+		echo $js_code;
+	}
+ 	
+	$dataPoints = array();	
 	
 	for ($i = 0; $i < 147209; $i++) {
-    	array_push($dataPoints, array("label"=> $appname[$i], "y"=> array($installmin[$i],$installmax[$i])));
+		array_push($dataPoints, array("label"=> $appname[$i], "y"=> array($installmin[$i],$installmax[$i]))); 
 	}
- 
+
+	$datajson=json_encode($dataPoints, JSON_NUMERIC_CHECK);
+	$appnamejson=json_encode($appname, JSON_NUMERIC_CHECK);
+	$installminjson=json_encode($installmin, JSON_NUMERIC_CHECK);
+	$installmaxjson=json_encode($installmax, JSON_NUMERIC_CHECK);
 ?>
 <!doctype html>
 <html>
@@ -31,42 +44,97 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	 
-<script>
-window.onload = function () {
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-    zoomEnabled: true,
-	options: {
-			maintainAspectRatio: false
-        },
-	title: {
-		text: "AppName based on installs"
-	},
-	axisY:{
-		title: "Installs (I)",
-		suffix: "I",
-		logarithmic: true
-	},
-	toolTip: {
-		shared: true,
-		reversed: true
-	},
-	theme: "dark1",
-	data: [
-		{
-			type: "rangeBar",
-			indexLabel: "{y[#index]} I",
-			toolTipContent: "<b>{label}</b>: {y[0]} I to {y[1]} I",
-			dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-		}
-	]
+<script type="text/javascript">
 	
-});
+			
+							
+window.onload = function () {
+ 			
+				var amountData = document.getElementById('Amount');
+				amountData.addEventListener( "change",  function(){
+				var am = parseInt(amountData.options[amountData.selectedIndex].value);
+				console.log(am);
+				
+				let appname=<?php echo json_encode($appname, JSON_NUMERIC_CHECK); ?>;
+				let installmin=<?php echo json_encode($installmin, JSON_NUMERIC_CHECK); ?>;
+				let	installmax=<?php echo json_encode($installmax, JSON_NUMERIC_CHECK); ?>;
+				var dataJSon= <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>;
+				var dataJS = new Array(am)
+				for (i=0; i<am; i++) {
+
+					//dataJS[i]=[appname[i],[installmin[i],installmax[i]]];
+					dataJS[i]=dataJSon[i];
+				}
+				console.log(dataJS);	
+				var chart = new CanvasJS.Chart("chartContainer", {
+						animationEnabled: true,
+						zoomEnabled: true,
+						options: {
+								maintainAspectRatio: false
+							},
+						title: {
+							text: "AppName based on installs"
+						},
+						axisY:{
+							title: "Installs",
+							suffix: "",
+							logarithmic: true
+						},
+						toolTip: {
+							shared: true,
+							reversed: true
+						},
+						theme: "dark1",
+						data: [
+							{
+								type: "rangeBar",
+								indexLabel: "{y[#index]}",
+								toolTipContent: "<b>{label}</b>: {y[0]} to {y[1]}",
+								dataPoints: dataJS
+							}
+						]
+
+					});
+					chart.render();
+					
+			});
+	var chart = new CanvasJS.Chart("chartContainer", {
+						animationEnabled: true,
+						zoomEnabled: true,
+						options: {
+								maintainAspectRatio: false
+							},
+						title: {
+							text: "AppName based on installs"
+						},
+						axisY:{
+							title: "Installs",
+							suffix: "",
+							logarithmic: true
+						},
+						toolTip: {
+							shared: true,
+							reversed: true
+						},
+						theme: "dark1",
+						data: [
+							{
+								type: "rangeBar",
+								indexLabel: "{y[#index]}",
+								toolTipContent: "<b>{label}</b>: {y[0]} to {y[1]}",
+								dataPoints: 0
+							}
+						]
+
+					});
+					chart.render();
+		
+	}
+
+					
+					
  
-chart.render();
- 
-}
+	
 </script>	
 </head>
 <body>
@@ -89,7 +157,17 @@ chart.render();
     </nav>
   </header>
 
-
+<div>Amount of data to show:
+  <select id="Amount" name="Cantidad">
+	<option value="" selected disabled hidden>Choose here</option>
+    <option value="25">25</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+    <option value="500">500</option>
+    <option value="2000">2000</option>.
+	<option value="147209">All</option>
+  </select>  
+</div>
 <div id="chartContainer" style="height: 605px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 

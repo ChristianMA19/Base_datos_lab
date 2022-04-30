@@ -315,16 +315,23 @@ window.onload = function () {
 		  <li><img src="images/logo_transparent.png"  class="logo"></li>
         <li><a href="index.html" class="nav-enlace">Home Page</a></li>
         <li><a href="grafico1.php" class="nav-enlace">Grafico 1</a></li>
-		  		  <li><a href="grafico2.php" class="nav-enlace">Grafico 2</a></li>
+		<li><a href="grafico2.php" class="nav-enlace">Grafico 2</a></li>
 		<li><a href="grafico3.php" class="nav-enlace">Grafico 3</a></li>
 		<li><a href="grafico.php" class="nav-enlace">Grafico 4</a></li>
-		  <li><a href="index.html" class="nav-enlace">Base de Datos</a></li>
+		  <li><a href="Base-de-datos.php" class="nav-enlace">Base de Datos</a></li>
 		  <li><a href="https://www.uninorte.edu.co/" class="nav-enlace">Universidad del Norte</a></li>
 		  
       </ul>
     </nav>
   </header>
-
+<div>Category vs:
+  <select id="rows" name="DataRow">
+	<option value="" selected disabled hidden>Choose here</option>
+    <option value="1">Ad Supported</option>
+	<option value="2">In-App Purchases</option>
+    <option value="3">Free</option>
+  </select>  
+</div>
 <div>Amount of data to show:
   <select id="Amount" name="Cantidad">
 	<option value="" selected disabled hidden>Choose here</option>
@@ -336,14 +343,7 @@ window.onload = function () {
 	<option value="48">All</option>
   </select>  
 </div>
-	<div>Category vs:
-  <select id="rows" name="DataRow">
-	<option value="" selected disabled hidden>Choose here</option>
-    <option value="1">Ad Supported</option>
-	<option value="2">In-App Purchases</option>
-    <option value="3">Free</option>
-  </select>  
-</div>
+	
 <div id="chartContainer" style="height: 605px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 

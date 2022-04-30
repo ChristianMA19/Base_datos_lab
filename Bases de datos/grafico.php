@@ -55,9 +55,7 @@ window.onload = function () {
 				var am = parseInt(amountData.options[amountData.selectedIndex].value);
 				console.log(am);
 				
-				let appname=<?php echo json_encode($appname, JSON_NUMERIC_CHECK); ?>;
-				let installmin=<?php echo json_encode($installmin, JSON_NUMERIC_CHECK); ?>;
-				let	installmax=<?php echo json_encode($installmax, JSON_NUMERIC_CHECK); ?>;
+				
 				var dataJSon= <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>;
 				var dataJS = new Array(am)
 				for (i=0; i<am; i++) {
@@ -88,7 +86,6 @@ window.onload = function () {
 						data: [
 							{
 								type: "rangeBar",
-								indexLabel: "{y[#index]}",
 								toolTipContent: "<b>{label}</b>: {y[0]} to {y[1]}",
 								dataPoints: dataJS
 							}
@@ -112,6 +109,9 @@ window.onload = function () {
 							suffix: "",
 							logarithmic: true
 						},
+						axisX:{
+							labelPlacement: "inside"
+						},
 						toolTip: {
 							shared: true,
 							reversed: true
@@ -120,7 +120,6 @@ window.onload = function () {
 						data: [
 							{
 								type: "rangeBar",
-								indexLabel: "{y[#index]}",
 								toolTipContent: "<b>{label}</b>: {y[0]} to {y[1]}",
 								dataPoints: 0
 							}
@@ -149,7 +148,10 @@ window.onload = function () {
       <ul>
 		  <li><img src="images/logo_transparent.png"  class="logo"></li>
         <li><a href="index.html" class="nav-enlace">Home Page</a></li>
-        <li><a href="grafico.php" class="nav-enlace">Graficos</a></li>
+        <li><a href="grafico1.php" class="nav-enlace">Grafico 1</a></li>
+		  <li><a href="grafico2.php" class="nav-enlace">Grafico 2</a></li>
+		<li><a href="grafico3.php" class="nav-enlace">Grafico 3</a></li>
+		<li><a href="grafico.php" class="nav-enlace">Grafico 4</a></li>
 		  <li><a href="index.html" class="nav-enlace">Base de Datos</a></li>
 		  <li><a href="https://www.uninorte.edu.co/" class="nav-enlace">Universidad del Norte</a></li>
 		  

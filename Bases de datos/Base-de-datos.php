@@ -2,6 +2,8 @@
 	$conexion=mysqli_connect('localhost','root','','gpstoreapps');
 ?>
 
+
+
 <!doctype html>
 <html>
 <head>
@@ -28,7 +30,10 @@
       <ul>
 		  <li><img src="images/logo_transparent.png"  class="logo"></li>
         <li><a href="index.html" class="nav-enlace">Home Page</a></li>
-        <li><a href="grafico.php" class="nav-enlace">Graficos</a></li>
+        <li><a href="grafico1.php" class="nav-enlace">Grafico 1</a></li>
+		  <li><a href="grafico2.php" class="nav-enlace">Grafico 2</a></li>
+		<li><a href="grafico3.php" class="nav-enlace">Grafico 3</a></li>
+		<li><a href="grafico.php" class="nav-enlace">Grafico 4</a></li>
 		  <li><a href="index.html" class="nav-enlace">Base de Datos</a></li>
 		  <li><a href="https://www.uninorte.edu.co/" class="nav-enlace">Universidad del Norte</a></li>
 		  
@@ -52,14 +57,14 @@
 	$result=mysqli_query($conexion,$sql); while($mostrar=mysqli_fetch_array($result)){
 	?>
 	<tr>
-		<td><?php echo $mostrar['AppName']?></td>
+		<td><?php echo $mostrar['App Name']?></td>
 	  	<td><?php echo $mostrar['Category']?></td>
 	  	<td><?php echo $mostrar['Rating']?></td>
-		<td><?php echo $mostrar['RatingCount']?></td>
+		<td><?php echo $mostrar['Rating Count']?></td>
 		<td><?php echo $mostrar['Installs']?></td>
 		<td><?php echo $mostrar['Size']?></td>
-		<td><?php echo $mostrar['DeveloperId']?></td>
-		<td><?php echo $mostrar['ContentRating']?></td>
+		<td><?php echo $mostrar['Developer Id']?></td>
+		<td><?php echo $mostrar['Content Rating']?></td>
 	</tr>
 	<?php
 	}

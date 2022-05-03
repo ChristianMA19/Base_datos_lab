@@ -63,7 +63,8 @@
 }
 .container .columns h4 {
     text-align: center;
-    color: #1D1D1B;
+	font-size: 18px;
+    color: #D13133;
 }
 .primary_header {
 	width: 100%;
@@ -111,7 +112,7 @@
 	cursor: pointer;
 }
 .left_article {
-	background-color: #FFFFFF;
+	background-color: #2a2a2a;
 	width: 60%;
 	float: left;
 	font-family: "Source Sans Pro";

@@ -41,8 +41,8 @@
     </nav>
   </header>
 
-<table border="1" align="center">
-	<tr>
+<table border="1" align="center" bordercolor=#FFFFFF >
+	<tr bgcolor="#FFFFFF">
 	  	<td>App Name</td>
 	  	<td>Category</td>
 	  	<td>Rating</td>
@@ -56,7 +56,7 @@
 	$sql="SELECT * FROM `google_playstore` LIMIT 1000";
 	$result=mysqli_query($conexion,$sql); while($mostrar=mysqli_fetch_array($result)){
 	?>
-	<tr>
+	<tr bgcolor="#FFFFFF">
 		<td><?php echo $mostrar['AppName']?></td>
 	  	<td><?php echo $mostrar['Category']?></td>
 	  	<td><?php echo $mostrar['Rating']?></td>

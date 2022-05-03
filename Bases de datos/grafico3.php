@@ -229,12 +229,12 @@ window.onload = function () {
   </header>
 
 
-	<div>Rating vs:
+	<div class="select">Rating vs:
   <select id="rows" name="DataRow">
 	<option value="" selected disabled hidden>Choose here</option>
   </select>  
 </div>
-	<div>Amount of data to show:
+	<div class="select">Amount of data to show:
   <select id="Amount" name="Cantidad">
 	<option value="" selected disabled hidden>Select previous first</option>
   </select>  

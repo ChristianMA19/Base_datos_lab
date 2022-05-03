@@ -235,7 +235,7 @@ window.onload = function () {
       </ul>
     </nav>
   </header>
-<div>Category vs:
+<div class="select">Category vs:
   <select id="rows" name="DataRow">
 	<option value="" selected disabled hidden>Choose here</option>
     <option value="1">Price</option>
@@ -243,7 +243,7 @@ window.onload = function () {
     <option value="3">Maximum Installs</option>
   </select>  
 </div>
-<div>Amount of data to show:
+<div class="select">Amount of data to show:
   <select id="Amount" name="Cantidad">
 	<option value="" selected disabled hidden>Choose here</option>
     <option value="5">5</option>
